@@ -62,5 +62,9 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('build', ['fonts', 'styles', 'vendor', 'browserify']);
+gulp.task('watch', function() {
+    gulp.watch('src/less/**/*.less', ['styles']);
+});
+
+gulp.task('build', ['fonts', 'styles', 'vendor', 'browserify', 'watch']);
 gulp.task('default', ['build']);
