@@ -10,54 +10,114 @@
           media="screen">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <span class="glyphicon glyphicon-home"></span>
-                    </a>
+    <!--<header>-->
+        <!--<nav class="navbar navbar-default">-->
+            <!--<div class="container-fluid">-->
+                <!--<div class="navbar-header">-->
+                    <!--<a class="navbar-brand" href="index.html">-->
+                        <!--<span class="glyphicon glyphicon-home"></span>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</nav>-->
+    <!--</header>-->
+    <div class="container-fluid">
+        <header>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
+                    <h1>clarissedubus</h1>
                 </div>
             </div>
-        </nav>
-    </header>
-    <section class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1>Clarisse Dubus</h1>
-                <h2>Interior Architect & Designer</h2>
-            </div>
-        </div>
-    </section>
-    <section class="container">
-        <div class="row">
-            <div class="col-md-2 col-md-offset-4 text-center">
-                <h3>Studio</h3>
-            </div>
-            <div class="col-md-2 text-center">
-                <h3>Boutique</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h4>
-                    Website under construction.
-                </h4>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <a href="#"></a>
+        </header>
+        <main>
+            <div id="nav-parent"  class="row">
+                <div id="nav-col"
+                     class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-left">
+                    <div id="nav-space"></div>
+                    <div class="middle" id="nav">
+                        <h4>studio /</h4>
+                        <h4>boutique /</h4>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 text-center">
+                    <img src="http://payload275.cargocollective.com/1/11/355884/7809003/pink-Square_670.jpg"
+                         class="img-main">
+
                 </div>
             </div>
-        </div>
-    </footer>
-    <script src="/public/js/vendor.js"></script>
-    <script src="/public/js/vendor.bundle.js"></script>
-    <script src="/public/js/bundle.js"></script>
+        </main>
+        <footer>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-left">
+                    <h4>interiorarchitect / designer</h4>
+                </div>
+                <!--<div class="col-md-9 text-right">-->
+                <!--<h4>-->
+                <!--all works © clarisse dubus 2015 | clarisse.dubus@gmail.com-->
+                <!--</h4>-->
+                <!--</div>-->
+            </div>
+        </footer>
+    </div>
+    <script src="public/js/vendor.js"></script>
+    <script src="public/js/vendor.bundle.js"></script>
+    <script src="public/js/bundle.js"></script>
+    <script>
+        function centerVerticallyInElement($element, $parent, $space) {
+            var ph = $parent.height(),
+                eoh = $element.outerHeight();
+
+            $space.css({
+                'height': (ph - eoh) / 2 + 'px'
+            });
+        }
+        function setMainImageHeight() {
+            var $w = $(window),
+                hoh = $('header').outerHeight(),
+                fph = $('footer').outerHeight(),
+                wh = $w.height(),
+                noh = ($w.width() > 991) ? 0 : $('#nav-col').outerHeight();
+            $('.img-main').css({
+                'height': (wh - hoh - fph - noh) + 'px'
+            });
+        }
+
+        function reset() {
+            var $nav = $('#nav'),
+                $navParent = $('#nav-parent'),
+                $navSpace = $('#nav-space');
+
+            $nav.css({
+                'height': 'auto'
+            });
+            $navParent.css({
+                'height': 'auto'
+            });
+            $navSpace.css({
+                'height': 0
+            });
+        }
+
+        function render() {
+            var $nav = $('#nav'),
+                $navParent = $('#nav-parent'),
+                $navSpace = $('#nav-space');
+            setMainImageHeight();
+            if ($(window).width() > 991) {
+                centerVerticallyInElement($nav, $navParent, $navSpace);
+            } else {
+                reset();
+            }
+        }
+
+        $(document).ready(function() {
+            render();
+        });
+
+        $(window).resize(function() {
+            render();
+        });
+    </script>
 </body>
 </html>
 
