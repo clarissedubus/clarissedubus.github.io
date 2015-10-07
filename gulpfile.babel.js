@@ -64,6 +64,7 @@ gulp.task('styles', function() {
 
 gulp.task('watch', function() {
     gulp.watch('src/less/**/*.less', ['styles']);
+    gulp.watch('src/app.js', ['browserify']);
 });
 
 gulp.task('build', ['fonts', 'styles', 'vendor', 'browserify', 'watch']);
