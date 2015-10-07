@@ -7,12 +7,27 @@ body {
 h1, .h1 {
   font-size: 64px;
   font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+}
+
+h4, .h4 {
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 }
 
 a {
   color: #000000;
   &:hover {
     color: #3e3e3e;
+  }
+}
+
+a.quiet {
+  &:hover {
+    text-decoration: none;
   }
 }
 
@@ -25,7 +40,18 @@ a.active {
   }
 }
 
+.text-underline {
+  text-decoration: underline;
+}
+
 .img-main {
   height: 100%;
   width: 100%;
+}
+
+header, footer {
+  height: 100px;
+  @media (max-width: 768px) {
+    height: 100px;
+  }
 }

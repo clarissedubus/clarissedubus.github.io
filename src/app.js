@@ -19,7 +19,8 @@ function centerVerticallyInElement($element, $parent, $space) {
         'height': (ph - eoh) / 2 + 'px'
     });
 }
-function setMainContentHeight() {
+
+function setMainSectionHeight() {
     var $w = $(window),
         hoh = $('header').outerHeight(),
         fph = $('footer').outerHeight(),
@@ -31,18 +32,20 @@ function setMainContentHeight() {
 }
 
 function reset() {
-    var $nav = $('#nav'),
-        $navParent = $('#nav-parent'),
-        $navSpace = $('#nav-space');
+    var space = '20px',
+        $mainSpace = $('#main-space'),
+        $navSpace = $('#nav-space'),
+        $footerSpace = $('#footer-space');
 
-    $nav.css({
-        'height': 'auto'
-    });
-    $navParent.css({
-        'height': 'auto'
+
+    $mainSpace.css({
+        'height': space
     });
     $navSpace.css({
-        'height': 0
+        'height': space
+    });
+    $footerSpace.css({
+        'height': space
     });
 }
 
@@ -53,10 +56,14 @@ function render() {
     var $mainContent = $('#main-content'),
         $main = $('main'),
         $mainSpace = $('#main-space');
-    setMainContentHeight();
+    setMainSectionHeight();
     if ($(window).width() > 991) {
         centerVerticallyInElement($nav, $navParent, $navSpace);
         centerVerticallyInElement($mainContent, $main, $mainSpace);
+        $('footer').children('.row').children().each(function() {
+            centerVerticallyInElement($(this), $('footer'), $('#footer-space'));
+        });
+
     } else {
         reset();
     }
