@@ -10,3 +10,62 @@ try {
     var pageTracker = _gat._getTracker("UA-XXXXXXXX-X");
     pageTracker._trackPageview();
 } catch(err) {}
+
+function centerVerticallyInElement($element, $parent, $space) {
+    var ph = $parent.height(),
+        eoh = $element.outerHeight();
+
+    $space.css({
+        'height': (ph - eoh) / 2 + 'px'
+    });
+}
+function setMainContentHeight() {
+    var $w = $(window),
+        hoh = $('header').outerHeight(),
+        fph = $('footer').outerHeight(),
+        wh = $w.height(),
+        noh = ($w.width() > 991) ? 0 : $('#nav-col').outerHeight();
+    $('#main-section').css({
+        'height': (wh - hoh - fph - noh) + 'px'
+    });
+}
+
+function reset() {
+    var $nav = $('#nav'),
+        $navParent = $('#nav-parent'),
+        $navSpace = $('#nav-space');
+
+    $nav.css({
+        'height': 'auto'
+    });
+    $navParent.css({
+        'height': 'auto'
+    });
+    $navSpace.css({
+        'height': 0
+    });
+}
+
+function render() {
+    var $nav = $('#nav'),
+        $navParent = $('#nav-parent'),
+        $navSpace = $('#nav-space');
+    var $mainContent = $('#main-content'),
+        $main = $('main'),
+        $mainSpace = $('#main-space');
+    setMainContentHeight();
+    if ($(window).width() > 991) {
+        centerVerticallyInElement($nav, $navParent, $navSpace);
+        centerVerticallyInElement($mainContent, $main, $mainSpace);
+    } else {
+        reset();
+    }
+}
+
+$(document).ready(function() {
+    render();
+});
+
+$(window).resize(function() {
+    render();
+});
