@@ -2,6 +2,7 @@
   "name": "clarissedubus",
   "dependencies": {
     "jquery": "^2.1.4",
-    "bootstrap": "^3.3.5"
+    "bootstrap": "^3.3.5",
+    "masonry": "~3.3.2"
   }
 }
