@@ -34,17 +34,12 @@ function setMainSectionHeight() {
 function reset() {
     var space = '20px',
         $mainSpace = $('#main-space'),
-        $navSpace = $('#nav-space'),
-        $footerSpace = $('#footer-space');
-
+        $navSpace = $('#nav-space');
 
     $mainSpace.css({
         'height': space
     });
     $navSpace.css({
-        'height': space
-    });
-    $footerSpace.css({
         'height': space
     });
 }
@@ -60,10 +55,6 @@ function render() {
     if ($(window).width() > 991) {
         centerVerticallyInElement($nav, $navParent, $navSpace);
         centerVerticallyInElement($mainContent, $main, $mainSpace);
-        $('footer').children('.row').children().each(function() {
-            centerVerticallyInElement($(this), $('footer'), $('#footer-space'));
-        });
-
     } else {
         reset();
     }
@@ -71,6 +62,27 @@ function render() {
 
 $(document).ready(function() {
     render();
+    $('.grid').masonry({
+        // set itemSelector so .grid-sizer is not used in layout
+        itemSelector: '.grid-item',
+
+        // use element for option
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+    });
+    $('.grid-item').hover(
+        function() {
+            $(this).children('.project-hover').css({
+                visibility: 'visible'
+            });
+        },
+        function() {
+            $(this).children('.project-hover').css({
+                visibility: 'hidden'
+            });
+        }
+    );
+
 });
 
 $(window).resize(function() {
