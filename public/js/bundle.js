@@ -65,21 +65,31 @@ function render() {
 
 $(document).ready(function () {
     render();
-    $('.grid').masonry({
-        // set itemSelector so .grid-sizer is not used in layout
-        itemSelector: '.grid-item',
+    var $grid = $('.grid');
+    imagesLoaded($grid, function () {
+        $grid.masonry({
 
-        // use element for option
-        columnWidth: '.grid-sizer',
-        percentPosition: true
-    });
-    $('.grid-item').hover(function () {
-        $(this).children('.project-hover').css({
-            visibility: 'visible'
+            // set itemSelector so .grid-sizer is not used in layout
+            itemSelector: '.grid-item',
+
+            // use element for option
+            columnWidth: '.grid-sizer',
+            percentPosition: true,
+            isOriginTop: false
         });
-    }, function () {
-        $(this).children('.project-hover').css({
-            visibility: 'hidden'
+
+        $grid.css({
+            "visibility": "visible"
+        });
+
+        $('.grid-item').hover(function () {
+            $(this).children('.project-hover').css({
+                visibility: 'visible'
+            });
+        }, function () {
+            $(this).children('.project-hover').css({
+                visibility: 'hidden'
+            });
         });
     });
 });
