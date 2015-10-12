@@ -78,9 +78,10 @@ $(document).ready(function () {
             isOriginTop: false
         });
 
-        $grid.css({
-            "visibility": "visible"
-        });
+        // Ease in the grid.
+        $grid.animate({
+            "opacity": 1
+        }, "slow");
 
         $('.grid-item').hover(function () {
             $(this).children('.project-hover').css({
