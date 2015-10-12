@@ -1,7 +1,11 @@
 @import '../../bower_components/bootstrap/less/bootstrap';
 
+/* Font Awesome */
+@import '../../public/fonts/font-awesome/less/font-awesome';
+@fa-font-path: '../../public/fonts//font-awesome/fonts';
+
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 h1, .h1 {
@@ -53,6 +57,13 @@ header {
   height: 100px;
   @media (max-width: 768px) {
     height: 65px;
+  }
+}
+
+.header-nav {
+  margin-top: 50px;
+  @media (max-width: 768px) {
+    margin-top: 24px;
   }
 }
 
@@ -121,13 +132,15 @@ main {
   @media (min-width: @screen-md) and (max-width: @screen-md-max) {
     float: right;
     display: block;
-    width: 80%;
+    width: 60%;
+    margin-right: 20%;
   }
 
   @media (min-width: @screen-lg) {
     float: right;
     display: block;
-    width: 85%;
+    width: 70%;
+    margin-right: 15%;
   }
 }
 
@@ -148,11 +161,23 @@ main {
 
 }
 
+.text-muted {
+  color: #acacac;
+}
+
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 20px;
+  padding: 20px 0;
+
+//  background: rgba(255,255,255,0.5);
+//  border-bottom: none;
+
+  display: -moz-box;      /* Firefox */
+  display: -webkit-box;   /* Safari and Chrome */
+  display: box;
+  -webkit-box-align:end;
 }
 
 .footer-left {
@@ -160,6 +185,12 @@ footer {
   text-align: left;
   position: relative;
   display: inline-block;
+  padding-left: 20px;
+  vertical-align: bottom;
+}
+
+.footer-icons {
+  bottom: 0;
 }
 
 .footer-right {
