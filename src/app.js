@@ -1,4 +1,5 @@
 /**
+ * File:    app.js
  * Author:  @juancarlosfarah
  * Date:    05/10/15
  */
@@ -64,10 +65,22 @@ $(document).ready(function() {
     render();
     var $grid = $('.grid');
     imagesLoaded( $grid, function() {
+
+        // Initialise Magnific Popup
+        $('.gallery').magnificPopup({
+            delegate: 'a',
+            gallery: {
+                enabled: true
+            },
+            type: 'image'
+        });
+
+        // Initialise Masonry
         $grid.masonry({
 
             // set itemSelector so .grid-sizer is not used in layout
             itemSelector: '.grid-item',
+            stamp: '.stamp',
 
             // use element for option
             columnWidth: '.grid-sizer',
@@ -80,19 +93,26 @@ $(document).ready(function() {
            "opacity": 1
         }, "slow");
 
-        $('.grid-item').hover(
-            function() {
-                $(this).children('.project-hover').css({
-                    visibility: 'visible'
-                });
-            },
-            function() {
-                $(this).children('.project-hover').css({
-                    visibility: 'hidden'
-                });
-            }
-        );
+        // Bind event handlers to each grid item.
+        $('.grid-item.grid-img').each(function(i) {
+            $(this).hover(
+                function() {
+                    $(this).children('.project-hover').css({
+                        visibility: 'visible'
+                    });
+                },
+                function() {
+                    $(this).children('.project-hover').css({
+                        visibility: 'hidden'
+                    });
+                }
+            );
+            $(this).click(function() {
+                $('.gallery').magnificPopup('open', i);
+            });
+        });
     });
+
 
 });
 
