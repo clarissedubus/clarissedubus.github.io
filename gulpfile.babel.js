@@ -23,6 +23,7 @@ gulp.task('vendor', function() {
     return gulp.src([
         'bower_components/jquery/dist/jquery.js',
         'bower_components/bootstrap/dist/js/bootstrap.js',
+        'bower_components/magnific-popup/dist/jquery.magnific-popup.min.js',
         'bower_components/masonry/dist/masonry.pkgd.min.js',
         'bower_components/imagesloaded/imagesloaded.pkgd.min.js'
     ]).pipe(concat('vendor.js'))
