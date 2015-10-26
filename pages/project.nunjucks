@@ -1,0 +1,101 @@
+<!-- projects.nunjucks -->
+{% extends "layout.nunjucks" %}
+
+{% block content %}
+
+{% import 'macros/navigation.nunjucks' as nav %}
+{{nav.active('projects')}}
+
+<main class="main-gallery">
+    <div id="main-content">
+        <div class="grid">
+            <div class="grid-sizer"></div>
+
+            <!-- Botte-cul -->
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="public/images/CD-Botcul-1.jpg" />
+                <div class="project-hover">
+                    <h4>Botte-Cul</h4>
+                    <p>A botte that is cool.</p>
+                </div>
+            </div>
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="public/images/CD-Botcul-2.jpg" />
+                <div class="project-hover">
+                    <h4>Botte-Cul</h4>
+                    <p>A botte that is cool.</p>
+                </div>
+            </div>
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="public/images/CD-Botcul-3.png" />
+                <div class="project-hover">
+                    <h4>Botte-Cul</h4>
+                    <p>A botte that is cool.</p>
+                </div>
+            </div>
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="public/images/CD-Cup-1.jpg" />
+                <div class="project-hover">
+                    <h4>Cup</h4>
+                    <p>A cup hyper chouette.</p>
+                </div>
+            </div>
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="public/images/CD-Cup-2.jpg" />
+                <div class="project-hover">
+                    <h4>Cup</h4>
+                    <p>A cup hyper chouette.</p>
+                </div>
+            </div>
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="public/images/CD-Cup-3.jpg" />
+                <div class="project-hover">
+                    <h4>Cup</h4>
+                    <p>A cup hyper chouette.</p>
+                </div>
+            </div>
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="public/images/CD-Cup-Family.jpg" />
+                <div class="project-hover">
+                    <h4>Cup</h4>
+                    <p>A cup hyper chouette.</p>
+                </div>
+            </div>
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="public/images/CD-Supperclub-1.jpg" />
+                <div class="project-hover">
+                    <h4>Supperclub</h4>
+                    <p>A supper that is club.</p>
+                </div>
+            </div>
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="public/images/CD-Supperclub-2.jpg" />
+                <div class="project-hover">
+                    <h4>Supperclub</h4>
+                    <p>A supper that is club.</p>
+                    <a href="projects/supperclub.html">View</a>
+                </div>
+            </div>
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="public/images/CD-Supperclub-3.jpg" />
+                <div class="project-hover">
+                    <h4>Supperclub</h4>
+                    <p>A supper that is club.</p>
+                    <a href="projects/supperclub.html">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

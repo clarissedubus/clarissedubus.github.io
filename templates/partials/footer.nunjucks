@@ -1,0 +1,13 @@
+<footer>
+    <div class="footer-left">
+        <span class="h4">interiorarchitect/designer</span><br />
+        <span class="h5 text-muted">©2015clarissedubus</span>
+    </div>
+    <div class="footer-left text-muted">
+        <div class="footer-icons">
+            <i class="fa fa-instagram fa-2x"></i>
+            <i class="fa fa-pinterest fa-2x"></i>
+            <i class="fa fa-facebook-official fa-2x"></i>
+        </div>
+    </div>
+</footer>

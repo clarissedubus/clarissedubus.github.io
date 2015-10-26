@@ -1,0 +1,15 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %}
+
+{% block content %}
+
+{% import 'macros/navigation.nunjucks' as nav %}
+{{nav.active('index')}}
+
+<main class="text-center">
+    <img class="img-main"
+         src="http://payload275.cargocollective.com/1/11/355884/7809003/pink-Square_670.jpg"
+         id="main-section" />
+</main>
+
+{% endblock %}

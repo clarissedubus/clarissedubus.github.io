@@ -1,0 +1,76 @@
+{% macro active(activePage='home', title='') %}
+
+{% if activePage == 'index' %}
+
+<div class="nav-left text-left">
+    <div class="nav-left-links">
+        <a href="#" class="h4">boutique/</a><br/>
+        <a href="projects.html" class="h4">studio/</a><br/>
+    </div>
+</div>
+
+{% elif activePage == 'projects' %}
+
+<div class="nav-left text-left">
+    <div class="nav-left-links">
+        <a href="#" class="h4">boutique/</a><br />
+        <a href="#" class="h4 active">studio/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
+                                   class="h5 active">projects/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="about.html"
+                                   class="h5">about/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="contact.html"
+                                   class="h5">contact/</a><br />
+    </div>
+</div>
+
+{% elif activePage == 'about' %}
+
+<div class="nav-left text-left">
+    <div class="nav-left-links">
+        <a href="#" class="h4">boutique/</a><br />
+        <a href="#" class="h4 active">studio/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="projects.html"
+                                   class="h5">projects/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
+                                   class="h5 active">about/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="contact.html"
+                                   class="h5">contact/</a><br />
+    </div>
+</div>
+
+{% elif activePage == 'contact' %}
+
+<div class="nav-left text-left">
+    <div class="nav-left-links">
+        <a href="#" class="h4">boutique/</a><br />
+        <a href="#" class="h4 active">studio/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="projects.html"
+                                   class="h5">projects/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="about.html"
+                                   class="h5">about/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
+                                   class="h5 active">contact/</a><br />
+    </div>
+</div>
+
+{% elif activePage == 'project' %}
+
+<div class="nav-left text-left">
+    <div class="nav-left-links">
+        <a href="#" class="h4">boutique/</a><br />
+        <a href="#" class="h4 active">studio/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="projects.html"
+                                   class="h5">projects/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
+                                                           class="h5 active">{{title}}/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="about.html"
+                                   class="h5">about/</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<a href="contact.html"
+                                   class="h5">contact/</a><br />
+    </div>
+</div>
+
+{% endif %}
+
+{% endmacro %}

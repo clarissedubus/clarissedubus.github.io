@@ -1,0 +1,36 @@
+<!-- projects.nunjucks -->
+{% extends "layout.nunjucks" %}
+
+{% block content %}
+
+{% import 'macros/navigation.nunjucks' as nav %}
+{{nav.active('project', 'botte-cul')}}
+
+<main class="main-gallery">
+    <div id="main-content">
+        <div class="grid">
+            <div class="grid-sizer"></div>
+            <div class="grid-item project-text text-left">
+                <h3>{{ projects['botte-cul'].title }}</h3>
+                <p class="text-left">
+                    {{ projects['botte-cul'].description }}
+                </p>
+            </div>
+            {% for image in projects['botte-cul'].images %}
+            <div class="grid-item grid-img">
+                <img class="img-responsive"
+                     src="{{ image.src }}"
+                     alt="{{ image.alt }}" />
+                <div class="project-hover"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="gallery hidden">
+        {% for image in projects['botte-cul'].images %}
+            <a href="{{ image.src }}"></a>
+        {% endfor %}
+    </div>
+</main>
+
+{% endblock %}

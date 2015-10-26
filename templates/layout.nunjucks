@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Clarisse Dubus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          type="text/css"
+          href="public/css/styles.css"
+          media="screen">
+    <link rel="stylesheet"
+          type="text/css"
+          href="public/css/magnific-popup.css"
+          media="screen">
+</head>
+<body>
+<div class="container-fluid">
+    {% include "partials/header.nunjucks" %}
+
+    {% block content %} {% endblock %}
+
+    {% include "partials/footer.nunjucks" %}
+</div>
+<script src="public/js/vendor.js"></script>
+<script src="public/js/vendor.bundle.js"></script>
+<script src="public/js/bundle.js"></script>
+</body>
+</html>
+

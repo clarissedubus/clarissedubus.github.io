@@ -1,0 +1,19 @@
+<!-- projects.nunjucks -->
+{% extends "layout.nunjucks" %}
+
+{% block content %}
+
+{% import 'macros/navigation.nunjucks' as nav %}
+{{nav.active('contact')}}
+
+<main>
+    <section class="main-content text-center">
+        <a href="mailto:clarisse@clarissedubus.com"
+           target="_blank"
+           class="h4">
+            hello@clarissedubus.com
+        </a>
+    </section>
+</main>
+
+{% endblock %}
