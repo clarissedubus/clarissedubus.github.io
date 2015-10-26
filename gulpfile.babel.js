@@ -10,10 +10,17 @@ import concat from 'gulp-concat';
 import source from 'vinyl-source-stream';
 import cssmin from 'gulp-cssmin';
 import less from 'gulp-less';
+import gutil from 'gulp-util';
 import plumber from 'gulp-plumber';
 import autoprefixer from 'gulp-autoprefixer';
+import resolutions from 'browserify-resolutions';
+import watchify from 'watchify';
 
 const dependencies = [
+    'react',
+    'react-dom',
+    'react-router',
+    'react-bootstrap',
     'underscore'
 ];
 
@@ -40,6 +47,7 @@ gulp.task('fonts', function() {
 gulp.task('browserify-vendor', function() {
     return browserify()
         .require(dependencies)
+        .plugin(resolutions, 'react')
         .bundle()
         .pipe(source('vendor.bundle.js'))
         .pipe(gulp.dest('public/js'));
@@ -49,6 +57,7 @@ gulp.task('browserify-vendor', function() {
 gulp.task('browserify', ['browserify-vendor'], function() {
     return browserify('src/app.js')
         .external(dependencies)
+        .plugin(resolutions, 'react')
         .transform(babelify)
         .bundle()
         .pipe(source('bundle.js'))
@@ -67,8 +76,41 @@ gulp.task('styles', function() {
 
 gulp.task('watch', function() {
     gulp.watch('src/less/**/*.less', ['styles']);
-    gulp.watch('src/app.js', ['browserify']);
 });
 
-gulp.task('build', ['fonts', 'styles', 'vendor', 'browserify', 'watch']);
+
+// Same as browserify task, but will also watch for changes and re-compile.
+gulp.task('browserify-watch', ['browserify-vendor'], function() {
+    var bundler = watchify(browserify('src/app.js', watchify.args));
+    bundler.external(dependencies);
+    bundler.plugin(resolutions, 'react');
+    bundler.transform(babelify);
+    bundler.on('update', rebundle);
+    return rebundle();
+
+    function rebundle() {
+        var start = Date.now();
+        return bundler.plugin(resolutions, 'react')
+            .bundle()
+            .on('error', function(err) {
+                gutil.log(gutil.colors.red(err.toString()));
+            })
+            .on('end', function() {
+                gutil.log(gutil.colors.green('Finished re-bundling in',
+                    (Date.now() - start) + 'ms.'));
+            })
+            .pipe(source('bundle.js'))
+            .pipe(gulp.dest('public/js/'));
+    }
+});
+
+gulp.task('build',
+          [
+              'fonts',
+              'styles',
+              'vendor',
+              'browserify',
+              'browserify-watch',
+              'watch'
+          ]);
 gulp.task('default', ['build']);
