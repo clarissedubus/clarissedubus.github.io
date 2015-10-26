@@ -15,12 +15,11 @@ import plumber from 'gulp-plumber';
 import autoprefixer from 'gulp-autoprefixer';
 import resolutions from 'browserify-resolutions';
 import watchify from 'watchify';
+import nunjucks from 'gulp-nunjucks-render';
+import data from 'gulp-data';
+import fs from 'fs';
 
 const dependencies = [
-    'react',
-    'react-dom',
-    'react-router',
-    'react-bootstrap',
     'underscore'
 ];
 
@@ -57,7 +56,7 @@ gulp.task('browserify-vendor', function() {
 gulp.task('browserify', ['browserify-vendor'], function() {
     return browserify('src/app.js')
         .external(dependencies)
-        .plugin(resolutions, 'react')
+        .plugin(resolutions, '*')
         .transform(babelify)
         .bundle()
         .pipe(source('bundle.js'))
@@ -76,6 +75,8 @@ gulp.task('styles', function() {
 
 gulp.task('watch', function() {
     gulp.watch('src/less/**/*.less', ['styles']);
+    gulp.watch('**/*.nunjucks', ['nunjucks']);
+    gulp.watch('data/*.json', ['nunjucks']);
 });
 
 
@@ -83,14 +84,14 @@ gulp.task('watch', function() {
 gulp.task('browserify-watch', ['browserify-vendor'], function() {
     var bundler = watchify(browserify('src/app.js', watchify.args));
     bundler.external(dependencies);
-    bundler.plugin(resolutions, 'react');
+    bundler.plugin(resolutions, '*');
     bundler.transform(babelify);
     bundler.on('update', rebundle);
     return rebundle();
 
     function rebundle() {
         var start = Date.now();
-        return bundler.plugin(resolutions, 'react')
+        return bundler.plugin(resolutions, '*')
             .bundle()
             .on('error', function(err) {
                 gutil.log(gutil.colors.red(err.toString()));
@@ -104,6 +105,20 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
     }
 });
 
+gulp.task('nunjucks', function() {
+   nunjucks.nunjucks.configure(['templates/']);
+
+    // Gets .html and .nunjucks files in pages
+    return gulp.src('pages/**/*.+(html|nunjucks)')
+        .pipe(data(function() {
+            return JSON.parse(fs.readFileSync('./data/projects.json', 'utf8'));
+        }))
+        // Renders template with nunjucks
+        .pipe(nunjucks())
+        // output files in app folder
+        .pipe(gulp.dest('.'))
+});
+
 gulp.task('build',
           [
               'fonts',
@@ -111,6 +126,7 @@ gulp.task('build',
               'vendor',
               'browserify',
               'browserify-watch',
-              'watch'
+              'watch',
+              'nunjucks'
           ]);
 gulp.task('default', ['build']);
