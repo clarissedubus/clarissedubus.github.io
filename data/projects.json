@@ -1,0 +1,68 @@
+{
+    "projects": {
+        "supperclub": {
+            "title": "Supperclub",
+            "tagline": "A supper that is club",
+            "description": "This is the project text. The whole point about this project is that Clarisse's dream was to fall in love with a little weasel from Peru. She had been looking all over the place for little weasels, but she never knew that what they love most is supper clubs. One day she began looking for a supperclub and she found one under the tree next to the pub in the oceanfront. She ran really quickly to see if she could grab it before it disappeared, as supperclubs disappear really quickly, and she somehow managed to get there before everything and everyone else. So she quickly grabbed the supperclub and used it to find the weasel.",
+            "href": "supperclub.html",
+            "images": [
+                {
+                    "src": "public/images/CD-Supperclub-1.jpg",
+                    "alt": "Supperclub"
+                },
+                {
+                    "src": "public/images/CD-Supperclub-2.jpg",
+                    "alt": "Supperclub"
+                },
+                {
+                    "src": "public/images/CD-Supperclub-3.jpg",
+                    "alt": "Supperclub"
+                }
+            ]
+        },
+        "cup": {
+            "title": "Cup",
+            "tagline": "A cup hyper chouette",
+            "description": "This is the project text. The whole point about this project is that Clarisse's dream was to fall in love with a little weasel from Peru. She had been looking all over the place for little weasels, but she never knew that what they love most is supper clubs. One day she began looking for a supperclub and she found one under the tree next to the pub in the oceanfront. She ran really quickly to see if she could grab it before it disappeared, as supperclubs disappear really quickly, and she somehow managed to get there before everything and everyone else. So she quickly grabbed the supperclub and used it to find the weasel.",
+            "href": "cup.html",
+            "images": [
+                {
+                    "src": "public/images/CD-Cup-1.jpg",
+                    "alt": "Cup"
+                },
+                {
+                    "src": "public/images/CD-Cup-2.jpg",
+                    "alt": "Cup"
+                },
+                {
+                    "src": "public/images/CD-Cup-3.jpg",
+                    "alt": "Cup"
+                },
+                {
+                    "src": "public/images/CD-Cup-Family.jpg",
+                    "alt": "Cup"
+                }
+            ]
+        },
+        "botte-cul": {
+            "title": "Botte-Cul",
+            "tagline": "A botte-cul.",
+            "description": "This is the project text. The whole point about this project is that Clarisse's dream was to fall in love with a little weasel from Peru. She had been looking all over the place for little weasels, but she never knew that what they love most is supper clubs. One day she began looking for a supperclub and she found one under the tree next to the pub in the oceanfront. She ran really quickly to see if she could grab it before it disappeared, as supperclubs disappear really quickly, and she somehow managed to get there before everything and everyone else. So she quickly grabbed the supperclub and used it to find the weasel.",
+            "href": "botte-cul.html",
+            "images": [
+                {
+                    "src": "public/images/CD-Botcul-1.jpg",
+                    "alt": "Botte-Cul"
+                },
+                {
+                    "src": "public/images/CD-Botcul-2.jpg",
+                    "alt": "Botte-Cul"
+                },
+                {
+                    "src": "public/images/CD-Botcul-3.png",
+                    "alt": "Botte-Cul"
+                }
+            ]
+        }
+    }
+}
