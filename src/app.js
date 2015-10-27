@@ -94,7 +94,7 @@ $(document).ready(function() {
         }, "slow");
 
         // Bind event handlers to each grid item.
-        $('.grid-item.grid-img').each(function(i) {
+        $('.grid-item.grid-img.grid-project').each(function() {
             $(this).hover(
                 function() {
                     $(this).children('.project-hover').css({
@@ -107,6 +107,13 @@ $(document).ready(function() {
                     });
                 }
             );
+            $(this).children('.project-hover').click(function() {
+                window.location.href = $(this).attr('data-href');
+            });
+        });
+
+        // Bind event handlers to each grid item.
+        $('.grid-item.grid-img.grid-gallery').each(function(i) {
             $(this).click(function() {
                 $('.gallery').magnificPopup('open', i);
             });
