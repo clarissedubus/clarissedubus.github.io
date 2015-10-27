@@ -15,9 +15,10 @@ import plumber from 'gulp-plumber';
 import autoprefixer from 'gulp-autoprefixer';
 import resolutions from 'browserify-resolutions';
 import watchify from 'watchify';
-import nunjucks from 'gulp-nunjucks-render';
+import nunjucksRender from 'gulp-nunjucks-render';
 import data from 'gulp-data';
 import fs from 'fs';
+import nunjucks from 'nunjucks';
 
 const dependencies = [
     'underscore'
@@ -75,8 +76,8 @@ gulp.task('styles', function() {
 
 gulp.task('watch', function() {
     gulp.watch('src/less/**/*.less', ['styles']);
-    gulp.watch('**/*.nunjucks', ['nunjucks']);
-    gulp.watch('data/*.json', ['nunjucks']);
+    gulp.watch('**/*.nunjucks', ['nunjucks', 'projects']);
+    gulp.watch('data/*.json', ['nunjucks', 'projects']);
 });
 
 
@@ -106,7 +107,7 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
 });
 
 gulp.task('nunjucks', function() {
-   nunjucks.nunjucks.configure(['templates/']);
+    nunjucksRender.nunjucks.configure(['templates/']);
 
     // Gets .html and .nunjucks files in pages
     return gulp.src('pages/**/*.+(html|nunjucks)')
@@ -114,9 +115,25 @@ gulp.task('nunjucks', function() {
             return JSON.parse(fs.readFileSync('./data/projects.json', 'utf8'));
         }))
         // Renders template with nunjucks
-        .pipe(nunjucks())
+        .pipe(nunjucksRender())
         // output files in app folder
         .pipe(gulp.dest('.'))
+});
+
+gulp.task('projects', function() {
+    nunjucks.configure(['templates/']);
+    let json = JSON.parse(fs.readFileSync('./data/projects.json', 'utf8')),
+        projects = json.projects;
+    for (var key in projects) {
+        let project = projects[key];
+        var html = nunjucks.render('project.nunjucks',
+                                   {
+                                       project: project,
+                                        projects: Object.keys(projects)
+                                   });
+        fs.writeFileSync(project.href, html);
+    }
+
 });
 
 gulp.task('build',
@@ -127,6 +144,7 @@ gulp.task('build',
               'browserify',
               'browserify-watch',
               'watch',
-              'nunjucks'
+              'nunjucks',
+              'projects'
           ]);
 gulp.task('default', ['build']);
