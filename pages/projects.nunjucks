@@ -12,11 +12,11 @@
             <div class="grid-sizer"></div>
 
             {% for key, project in projects %}
-            <div class="grid-item grid-img">
+            <div class="grid-item grid-img grid-project">
                 <img class="img-responsive"
                      src="{{ project.images[0].src }}"
                      alt="{{ project.images[0].alt }}" />
-                <div class="project-hover">
+                <div class="project-hover" data-href="{{ project.href }}">
                     <h4>
                         <a class="white quiet" href="{{ project.href }}">
                             {{ project.title }}

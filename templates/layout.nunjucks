@@ -14,13 +14,17 @@
           media="screen">
 </head>
 <body>
+
+{% include "partials/header.nunjucks" %}
+
 <div class="container-fluid">
-    {% include "partials/header.nunjucks" %}
 
     {% block content %} {% endblock %}
 
-    {% include "partials/footer.nunjucks" %}
 </div>
+
+{% include "partials/footer.nunjucks" %}
+
 <script src="public/js/vendor.js"></script>
 <script src="public/js/vendor.bundle.js"></script>
 <script src="public/js/bundle.js"></script>

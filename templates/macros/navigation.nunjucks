@@ -1,4 +1,4 @@
-{% macro active(activePage='home', title='') %}
+{% macro active(activePage='home', title='', projects=[]) %}
 
 {% if activePage == 'index' %}
 
@@ -62,8 +62,15 @@
         <a href="#" class="h4 active">studio/</a><br />
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="projects.html"
                                    class="h5">projects/</a><br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
-                                                           class="h5 active">{{title}}/</a><br />
+
+        {% for key in projects %}
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{key}}.html"
+                                                           class="h5
+        {% if key == title %} active {% endif %}">{{key}}/</a><br />
+
+        {% endfor %}
+
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="about.html"
                                    class="h5">about/</a><br />
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="contact.html"
