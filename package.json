@@ -37,6 +37,7 @@
   "dependencies": {
     "browserify-resolutions": "^1.0.6",
     "gulp-util": "^3.0.7",
+    "nunjucks": "^2.1.0",
     "watchify": "^3.5.0"
   }
 }
