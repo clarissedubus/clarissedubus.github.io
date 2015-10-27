@@ -1,33 +1,32 @@
-<!-- supperclub.nunjucks -->
+<!-- project.nunjucks -->
 {% extends "layout.nunjucks" %}
 
 {% block content %}
 
 {% import 'macros/navigation.nunjucks' as nav %}
-{{nav.active('project', 'cup')}}
+{{nav.active('project', project.key, projects)}}
 
 <main class="main-gallery">
     <div id="main-content">
         <div class="grid">
             <div class="grid-sizer"></div>
-            <div class="grid-item project-text text-left">
-                <h3>{{ projects['cup'].title }}</h3>
-                <p class="text-left">
-                    {{ projects['cup'].description }}
+            <div class="grid-item project-text text-justify">
+                <h3>{{ project.title }}</h3>
+                <p>
+                    {{ project.description }}
                 </p>
             </div>
-            {% for image in projects['cup'].images %}
-            <div class="grid-item grid-img">
+            {% for image in project.images %}
+            <div class="grid-item grid-img grid-gallery">
                 <img class="img-responsive"
                      src="{{ image.src }}"
                      alt="{{ image.alt }}" />
-                <div class="project-hover"></div>
             </div>
             {% endfor %}
         </div>
     </div>
     <div class="gallery hidden">
-        {% for image in projects['cup'].images %}
+        {% for image in project.images %}
         <a href="{{ image.src }}"></a>
         {% endfor %}
     </div>
