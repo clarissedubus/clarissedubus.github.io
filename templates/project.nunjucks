@@ -3,8 +3,7 @@
 
 {% block content %}
 
-{% import 'macros/navigation.nunjucks' as nav %}
-{{nav.active('project', project.key, projects)}}
+{{ nav.active('project', project.key, projects) }}
 
 <main class="main-gallery">
     <div id="main-content">

@@ -1,0 +1,13 @@
+{% macro active(activePage='index') %}
+
+<footer>
+    <div class="footer-left">
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-pinterest"></i>
+        <i class="fa fa-facebook-official"></i><br>
+        <span class="h5">interiorarchitect/designer</span><br>
+        <span class="h6 text-muted">©2015clarissedubus</span><br>
+    </div>
+</footer>
+
+{% endmacro %}

@@ -1,13 +1,15 @@
+{% macro active(activePage='index') %}
+
 <header>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
-                    <h1>
-                        <a href="index.html" class="quiet">clarissedubus</a>
-                    </h1>
+                    <a href="index.html" class="quiet h1">clarissedubus</a><br>
                 </div>
             </div>
         </div>
     </nav>
 </header>
+
+{% endmacro %}

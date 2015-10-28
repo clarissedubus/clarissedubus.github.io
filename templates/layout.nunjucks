@@ -15,15 +15,15 @@
 </head>
 <body>
 
-{% include "partials/header.nunjucks" %}
+{% import 'macros/header.nunjucks' as header %}
+{% import 'macros/navigation.nunjucks' as nav %}
+{% import 'macros/footer.nunjucks' as footer %}
 
 <div class="container-fluid">
-
+    {{ header.active('projects')}}
     {% block content %} {% endblock %}
-
+    {{ footer.active('projects')}}
 </div>
-
-{% include "partials/footer.nunjucks" %}
 
 <script src="public/js/vendor.js"></script>
 <script src="public/js/vendor.bundle.js"></script>
