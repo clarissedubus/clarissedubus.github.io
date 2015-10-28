@@ -133,7 +133,6 @@ gulp.task('projects', function() {
                                    });
         fs.writeFileSync(project.href, html);
     }
-
 });
 
 gulp.task('build',
