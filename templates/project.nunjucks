@@ -25,7 +25,7 @@
     </div>
     <div class="gallery hidden">
         {% for image in project.images %}
-        <a href="{{ image.src }}"></a>
+        <a href="public/images/{{project.key}}/{{image}}"></a>
         {% endfor %}
     </div>
 </main>
