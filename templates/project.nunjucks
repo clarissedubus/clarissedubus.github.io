@@ -18,8 +18,8 @@
             {% for image in project.images %}
             <div class="grid-item grid-img grid-gallery">
                 <img class="img-responsive"
-                     src="{{ image.src }}"
-                     alt="{{ image.alt }}" />
+                     src="public/images/{{project.key}}/{{image}}"
+                     alt="{{ project.title }} Image" />
             </div>
             {% endfor %}
         </div>

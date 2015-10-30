@@ -11,18 +11,19 @@
             <div class="grid-sizer"></div>
 
             {% for key, project in projects %}
+
             <div class="grid-item grid-img grid-project">
                 <img class="img-responsive"
-                     src="{{ project.images[0].src }}"
-                     alt="{{ project.images[0].alt }}" />
-                <div class="project-hover" data-href="{{ project.href }}">
+                     src="public/images/{{ key }}/{{ project.mainImage }}"
+                     alt="{{ project.title }}" />
+                <div class="project-hover" data-href="{{key}}.html">
                     <h4>
-                        <a class="white quiet" href="{{ project.href }}">
+                        <a class="white quiet" href="{{key}}.html">
                             {{ project.title }}
                         </a>
                     </h4>
                     <p>
-                        <a class="white quiet" href="{{ project.href }}">
+                        <a class="white quiet" href="{{key}}.html">
                             {{ project.tagline }}
                         </a>
                     </p>

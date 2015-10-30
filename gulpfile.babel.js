@@ -125,13 +125,17 @@ gulp.task('projects', function() {
     let json = JSON.parse(fs.readFileSync('./data/projects.json', 'utf8')),
         projects = json.projects;
     for (var key in projects) {
-        let project = projects[key];
+        let project = projects[key],
+            imageDir = './public/images/' + key,
+            images = fs.readdirSync(imageDir);
+        project['images'] = images;
+        project['key'] = key;
         var html = nunjucks.render('project.nunjucks',
                                    {
                                        project: project,
-                                        projects: Object.keys(projects)
+                                       projects: Object.keys(projects)
                                    });
-        fs.writeFileSync(project.href, html);
+        fs.writeFileSync(key + '.html', html);
     }
 });
 
