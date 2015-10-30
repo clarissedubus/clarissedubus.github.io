@@ -1,4 +1,3 @@
-<!-- project.nunjucks -->
 {% extends "layout.nunjucks" %}
 
 {% block content %}
