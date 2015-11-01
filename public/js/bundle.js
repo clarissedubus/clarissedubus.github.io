@@ -67,6 +67,12 @@ function render() {
 $(document).ready(function () {
     render();
     var $grid = $('.grid');
+
+    // Shuffle images around.
+    var imgs = $grid.children();
+    imgs = _.shuffle(imgs);
+    $grid.html(imgs);
+
     imagesLoaded($grid, function () {
 
         // Initialise Magnific Popup
