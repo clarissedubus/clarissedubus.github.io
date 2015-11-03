@@ -62,6 +62,13 @@ function render() {
     } else {
         reset();
     }
+
+    // Show or hide nav menu.
+    if ($(window).width() > 768) {
+        $('.nav-left').show();
+    } else {
+        $('.nav-left').hide();
+    }
 }
 
 $(document).ready(function () {
@@ -124,6 +131,11 @@ $(document).ready(function () {
                 $('.gallery').magnificPopup('open', i);
             });
         });
+    });
+
+    // Toggle nav menu.
+    $('.toggle-nav').click(function () {
+        $('.nav-left').toggle();
     });
 });
 
