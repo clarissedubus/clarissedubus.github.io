@@ -15,7 +15,8 @@
                 </p>
             </div>
             {% for image in project.images %}
-            <div class="grid-item grid-img grid-gallery">
+            <div class="grid-item grid-img grid-gallery"
+                 data-index="{{loop.index - 1}}">
                 <img class="img-responsive"
                      src="public/images/{{project.key}}/{{image}}"
                      alt="{{ project.title }} Image" />
