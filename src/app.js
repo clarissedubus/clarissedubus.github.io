@@ -4,13 +4,15 @@
  * Date:    05/10/15
  */
 
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-
-try {
-    var pageTracker = _gat._getTracker("UA-XXXXXXXX-X");
-    pageTracker._trackPageview();
-} catch(err) {}
+// Disable Google Analytics Temporarily
+// ====================================
+//var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+//document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//
+//try {
+//    var pageTracker = _gat._getTracker("UA-XXXXXXXX-X");
+//    pageTracker._trackPageview();
+//} catch(err) {}
 
 function centerVerticallyInElement($element, $parent, $space) {
     var ph = $parent.height(),
@@ -70,23 +72,45 @@ function render() {
 
 $(document).ready(function() {
     render();
-    var $grid = $('.grid');
+    var $grid = $('.grid'),
+        $gallery = $('.gallery');
 
-    // Shuffle images around.
-    var imgs = $grid.children();
-    imgs = _.shuffle(imgs);
-    $grid.html(imgs);
+    imagesLoaded($grid, function() {
 
-    imagesLoaded( $grid, function() {
+        // Shuffle images around.
+        var imgs = $grid.children(),
+            popups = $gallery.children(),
+            newPopups = [];
+        imgs = _.shuffle(imgs);
+
+        // Ensure order of gallery stays the same.
+        _.each(imgs, function(img) {
+            var i = parseInt($(img).attr('data-index'));
+            if (typeof(i) !== 'undefined') {
+                newPopups.push(popups[i]);
+            }
+        });
+
+        // Reinsert in new order.
+        $grid.html(imgs);
+        $gallery.html(newPopups);
 
         // Initialise Magnific Popup
-        $('.gallery').magnificPopup({
+        $gallery.magnificPopup({
             delegate: 'a',
             gallery: {
                 enabled: true
             },
             type: 'image'
         });
+
+        // Invert navigation functions for popup.
+        $.magnificPopup.instance.next = function() {
+            $.magnificPopup.proto.prev.call(this);
+        };
+        $.magnificPopup.instance.prev = function() {
+            $.magnificPopup.proto.next.call(this);
+        };
 
         // Initialise Masonry
         $grid.masonry({
