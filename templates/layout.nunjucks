@@ -22,7 +22,6 @@
 <div class="container-fluid">
     {{ header.active('projects')}}
     {% block content %} {% endblock %}
-    {{ footer.active('projects')}}
 </div>
 
 <script src="public/js/vendor.js"></script>

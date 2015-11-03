@@ -14,5 +14,5 @@
         </a>
     </section>
 </main>
-
+{{ footer.active('contact')}}
 {% endblock %}

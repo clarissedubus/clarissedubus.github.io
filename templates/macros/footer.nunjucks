@@ -1,6 +1,6 @@
 {% macro active(activePage='index') %}
 
-<footer>
+<footer {% if activePage == 'projects' %}class="footer-projects" {% endif %}>
     <div class="footer-left">
         <i class="fa fa-instagram"></i>
         <i class="fa fa-pinterest"></i>
