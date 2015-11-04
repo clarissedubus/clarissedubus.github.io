@@ -19,10 +19,11 @@
 {% import 'macros/navigation.nunjucks' as nav %}
 {% import 'macros/footer.nunjucks' as footer %}
 
-<div class="container-fluid">
-    {{ header.active('projects')}}
-    {% block content %} {% endblock %}
-</div>
+<!-- HEADER -->
+{{ header.active('projects')}}
+
+<!-- CONTENT -->
+{% block content %} {% endblock %}
 
 <script src="public/js/vendor.js"></script>
 <script src="public/js/vendor.bundle.js"></script>

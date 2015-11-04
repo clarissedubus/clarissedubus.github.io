@@ -135,6 +135,41 @@ header {
   padding-top: 10px;
 }
 
+
+/*
+ * NAVIGATION
+ * ==========
+ */
+.nav-left {
+  z-index: 50;
+  float: left;
+  display: block;
+  position: fixed;
+
+  @media (max-width: @screen-xs-max) {
+    display: none;
+    right: 0;
+    top: 51px;
+    width: 50%;
+    height: auto;
+
+  }
+  @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
+    width: 25%;
+    height: auto;
+  }
+  @media (min-width: @screen-md) and (max-width: @screen-md-max) {
+    width: 20%;
+    height: 100%;
+  }
+  @media (min-width: @screen-lg) {
+    float: left;
+    display: block;
+    width: 15%;
+    height: 100%;
+  }
+}
+
 /* Nav Menu */
 .navbar-toggle {
   position: static;
@@ -161,44 +196,14 @@ header {
   height: 1px;
 }
 
-.nav-left {
-  z-index: 50;
-  @media (max-width: @screen-xs-max) {
-    display: none;
-    position: fixed;
-    right: 0;
-    top: 52px;
-    width: 50%;
-    height: auto;
-
-  }
-  @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
-    float: left;
-    display: block;
-    position: fixed;
-    width: 25%;
-    height: auto;
-  }
-  @media (min-width: @screen-md) and (max-width: @screen-md-max) {
-    float: left;
-    display: block;
-    position: fixed;
-    width: 20%;
-    height: 100%;
-  }
-  @media (min-width: @screen-lg) {
-    float: left;
-    display: block;
-    position: fixed;
-    width: 15%;
-    height: 100%;
-  }
-}
-
 .grid-item > img {
   margin: auto;
 }
 
+/*
+ * MAIN CONTENT
+ * ============
+ */
 main {
 
   @media (max-width: @screen-xs-max) {
@@ -260,56 +265,28 @@ main.main-gallery {
   position: fixed;
   padding: 10px;
   width: inherit;
+  box-sizing: padding-box;
   background: rgba(255,255,255,0.8);
-}
-
-.img-main {
-
 }
 
 .text-muted {
   color: #acacac;
 }
 
+
+/*
+ * FOOTER
+ * ======
+ */
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 20px 0;
-  display: -moz-box;      /* Firefox */
-  display: -webkit-box;   /* Safari and Chrome */
-  display: box;
-  -webkit-box-align:end;
+  padding: 20px 10px;
 }
 
 .footer-projects {
   @media (max-width: @screen-xs-max) {
     position: static;
   }
-}
-
-.footer-left {
-  float: left;
-  text-align: left;
-  position: relative;
-  display: inline-block;
-  padding-left: 20px;
-  vertical-align: bottom;
-}
-
-.footer-left {
-  @media (min-width: @screen-xs) and (max-width: @screen-sm-max) {
-    padding-left: 0;
-  }
-}
-
-.footer-icons {
-  bottom: 0;
-}
-
-.footer-right {
-  float: right;
-  text-align: right;
-  position: relative;
-  display: inline-block;
 }

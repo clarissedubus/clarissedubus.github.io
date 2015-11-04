@@ -3,6 +3,7 @@
 
 {% block content %}
 
+<!-- NAV -->
 {{nav.active('contact')}}
 
 <main>
@@ -14,5 +15,8 @@
         </a>
     </section>
 </main>
+
+<!-- FOOTER -->
 {{ footer.active('contact')}}
+
 {% endblock %}

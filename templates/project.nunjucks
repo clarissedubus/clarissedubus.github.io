@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<!-- NAV -->
 {{ nav.active('project', project.key, projects) }}
 
 <main class="main-gallery">
@@ -30,5 +31,8 @@
         {% endfor %}
     </div>
 </main>
+
+<!-- FOOTER -->
+{{ footer.active('projects')}}
 
 {% endblock %}
