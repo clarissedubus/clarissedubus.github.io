@@ -100,7 +100,10 @@ header {
 
 .project-text {
   padding: 10px;
-  font-size: smaller;
+}
+
+.project-text > p {
+  font-size: small;
 }
 
 .project-hover {
@@ -120,6 +123,13 @@ header {
 
 .project-hover:hover {
   cursor: pointer;
+}
+
+.project-caption {
+  position: absolute;
+  margin: 0 -10px;
+  top: 40%;
+  width: 100%;
 }
 
 .grid-gallery:hover {
@@ -272,7 +282,6 @@ main.main-gallery {
 .text-muted {
   color: #acacac;
 }
-
 
 /*
  * FOOTER

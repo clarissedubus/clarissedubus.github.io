@@ -18,16 +18,18 @@
                      src="public/images/{{ key }}/{{ project.mainImage }}"
                      alt="{{ project.title }}" />
                 <div class="project-hover" data-href="{{key}}.html">
-                    <h4>
-                        <a class="white quiet" href="{{key}}.html">
-                            {{ project.title }}
-                        </a>
-                    </h4>
-                    <p>
-                        <a class="white quiet" href="{{key}}.html">
+                    <div class="project-caption">
+                        <em>
+                            <a class="h4 white quiet" href="{{key}}.html">
+                                {{ project.title }}
+                            </a>
+                        </em>
+                        <br>
+                        <a class="h5 white quiet" href="{{key}}.html">
                             {{ project.tagline }}
                         </a>
-                    </p>
+                        <br>
+                    </div>
                 </div>
             </div>
             {% endfor %}
