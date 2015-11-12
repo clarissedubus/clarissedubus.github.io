@@ -11,12 +11,11 @@
     "url": "git+https://github.com/clarissedubus/clarissedubus.github.io.git"
   },
   "author": "Juan Carlos Farah",
-  "license": "ISC",
   "private": true,
   "bugs": {
     "url": "https://github.com/clarissedubus/clarissedubus.github.io/issues"
   },
-  "homepage": "https://github.com/clarissedubus/clarissedubus.github.io#readme",
+  "homepage": "http://clarissedubus.com",
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.25",
