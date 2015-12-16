@@ -63,11 +63,13 @@
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="projects.html"
                                    class="h5">projects/</a><br />
 
-        {% for key in projects %}
+        {% for key, project in projects %}
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{key}}.html"
                                                            class="h5
-        {% if key == title %} active {% endif %}">{{key}}/</a><br />
+        {% if key == title %} active {% endif %}">
+            {{project.title|lower}}/
+        </a><br />
 
         {% endfor %}
 

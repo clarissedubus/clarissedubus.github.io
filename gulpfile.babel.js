@@ -134,7 +134,7 @@ gulp.task('projects', function() {
         var html = nunjucks.render('project.nunjucks',
                                    {
                                        project: project,
-                                       projects: Object.keys(projects)
+                                       projects: projects
                                    });
         fs.writeFileSync(key + '.html', html);
     }
