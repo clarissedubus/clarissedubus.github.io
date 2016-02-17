@@ -3,7 +3,7 @@
         "supperclub": {
             "title": "Supperclub",
             "tagline": "2014",
-            "description": "This project developed as a collaboration with Elizabeth Bragg, Food Consultant, and Nicholas Tannett, Sous-Chef at Chiltern Firehouse. We teamed up to organise an organic pop-up restaurant in London, serving a five course menu accompanied by three bespoke cocktails. All food was served in wooden plates designed for the occasion with a natural finish aimed at highlighting the importance of sustainable ingredients and homemade food. The idea was to allow the collection to resonate with the interior, landscape and graphic design, which were all developed specifically for the event. Interior Architecture. Graphic Design: Homemade Stamps for menu and invitation. Plates: Oak, rosewood, brass.",
+            "description": "This project developed as a collaboration with Elizabeth Bragg, Food Consultant, and Nicholas Tannett, Sous-Chef at Chiltern Firehouse. We teamed up to organise an organic pop-up restaurant in London, serving a five course menu accompanied by three bespoke cocktails. All food was served in wooden plates designed for the occasion with a natural finish aimed at highlighting the importance of sustainable ingredients and homemade food. The idea was to allow the collection to resonate with the interior, landscape and graphic design, which were all developed specifically for the event. Interior Architecture. Graphic Design: Handmade stamps for menu and invitation. Plates: Oak, rosewood, brass.",
             "mainImage": "ClarisseDubus-Supperclub-1.jpg"
         },
         "mazagran": {
@@ -53,6 +53,12 @@
             "tagline": "2014",
             "description": "This project was developed in collaboration with Violaine Truchetet. This object was conceived with a desire to structure and shape a space. Although it appears to resemble furniture in the form of a destructed chest of drawers, it is nevertheless a separating element in a room. This \"semi-partition\" provides several types of compartments on each of its sides and encourages wandering around its structure. Each face has different storage elements; drawers of unequal sizes but also open surfaces that can be used as simple shelves. Painted metal, wood.",
             "mainImage": "ClarisseDubus-WoodStock-Chateauneuf-1.jpg"
+        },
+        "wedding-invitation": {
+            "title": "Wedding Invitation",
+            "tagline": "2016",
+            "description": "This wedding invitation was inspired by the bride's favorite flower, the Nigella damascena. A minimalist and stylish logo was created to suit the occasion. Each invitation and accompanying menu were printed on cotton paper and stamped by hand. Handmade stamp on custom paper.",
+            "mainImage": "ClarisseDubus-WeddingInvitation-AR-1.JPG"
         }
     }
 }
