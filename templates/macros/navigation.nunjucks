@@ -12,7 +12,6 @@
 
 <div class="nav-left text-left">
     <div class="nav-left-links">
-        <a href="#" class="h4">boutique/</a><br />
         <a href="#" class="h4 active">studio/</a><br />
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
                                    class="h5 active">projects/</a><br />
@@ -27,7 +26,6 @@
 
 <div class="nav-left text-left">
     <div class="nav-left-links">
-        <a href="#" class="h4">boutique/</a><br />
         <a href="#" class="h4 active">studio/</a><br />
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="projects.html"
                                    class="h5">projects/</a><br />
@@ -42,7 +40,6 @@
 
 <div class="nav-left text-left">
     <div class="nav-left-links">
-        <a href="#" class="h4">boutique/</a><br />
         <a href="#" class="h4 active">studio/</a><br />
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="projects.html"
                                    class="h5">projects/</a><br />
@@ -57,7 +54,6 @@
 
 <div class="nav-left text-left">
     <div class="nav-left-links">
-        <a href="#" class="h4">boutique/</a><br />
         <a href="#" class="h4 active">studio/</a><br />
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="projects.html"
                                    class="h5">projects/</a><br />
