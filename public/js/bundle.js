@@ -128,12 +128,13 @@ $(document).ready(function () {
             isOriginTop: false
         });
 
+        // Hide loader.
+        $('#loader').hide();
+
         // Ease in the grid.
         $grid.animate({
             "opacity": 1
-        }, "slow", function () {
-            $('#loader').hide();
-        });
+        }, "slow");
 
         // Bind event handlers to each grid item.
         $('.grid-item.grid-img.grid-project').each(function () {
