@@ -121,15 +121,27 @@ gulp.task('nunjucks', function() {
         .pipe(gulp.dest('.'))
 });
 
+function readImages(imageDir) {
+    let images = [],
+        files = fs.readdirSync(imageDir);
+
+    files.map((filename) => {
+        if ((/\.(jpg|jpeg|png)$/i).test(filename)) {
+            images.push(filename);
+        }
+    });
+
+    return images;
+}
+
 gulp.task('projects', function() {
     nunjucks.configure(['templates/']);
     let json = JSON.parse(fs.readFileSync('./data/projects.json', 'utf8')),
         projects = json.projects;
     for (var key in projects) {
         let project = projects[key],
-            imageDir = './public/images/' + key,
-            images = fs.readdirSync(imageDir);
-        project['images'] = images;
+            imageDir = './public/images/' + key;
+        project['images'] = readImages(imageDir);
         project['key'] = key;
         var html = nunjucks.render('project.nunjucks',
                                    {
