@@ -78,8 +78,6 @@ $(document).ready(function() {
 
     imagesLoaded($grid, function() {
 
-        $('#loader').hide();
-
         // Shuffle images around.
         var imgs = $grid.children(),
             popups = $gallery.children(),
@@ -131,7 +129,9 @@ $(document).ready(function() {
         // Ease in the grid.
         $grid.animate({
            "opacity": 1
-        }, "slow");
+        }, "slow", function() {
+            $('#loader').hide();
+        });
 
         // Bind event handlers to each grid item.
         $('.grid-item.grid-img.grid-project').each(function() {
