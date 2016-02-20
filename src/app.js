@@ -78,6 +78,8 @@ $(document).ready(function() {
 
     imagesLoaded($grid, function() {
 
+        $('#loader').hide();
+
         // Shuffle images around.
         var imgs = $grid.children(),
             popups = $gallery.children(),
