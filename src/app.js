@@ -78,8 +78,6 @@ $(document).ready(function() {
 
     imagesLoaded($grid, function() {
 
-        $('#loader').hide();
-
         // Shuffle images around.
         var imgs = $grid.children(),
             popups = $gallery.children(),
@@ -127,6 +125,9 @@ $(document).ready(function() {
             percentPosition: true,
             isOriginTop: false
         });
+
+        // Hide loader.
+        $('#loader').hide();
 
         // Ease in the grid.
         $grid.animate({
