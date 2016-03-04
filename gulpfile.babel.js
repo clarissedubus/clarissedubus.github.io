@@ -1,6 +1,7 @@
 /**
  * Author:  @juancarlosfarah
  * Date:    05/10/15
+ * File:    gulpfile.babel.js
  */
 
 import gulp from 'gulp';
@@ -23,7 +24,6 @@ import nunjucks from 'nunjucks';
 const dependencies = [
     'underscore'
 ];
-
 
 // Combine all JS libraries into a single file for fewer HTTP requests.
 gulp.task('vendor', function() {
@@ -75,12 +75,12 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('public/css'));
 });
 
+// Watch for changes across relevant directories.
 gulp.task('watch', function() {
     gulp.watch('src/less/**/*.less', ['styles']);
     gulp.watch('**/*.nunjucks', ['nunjucks', 'projects']);
     gulp.watch('data/*.json', ['nunjucks', 'projects']);
 });
-
 
 // Same as browserify task, but will also watch for changes and re-compile.
 gulp.task('browserify-watch', ['browserify-vendor'], function() {
@@ -107,6 +107,7 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
     }
 });
 
+// Compile all nunjucks files.
 gulp.task('nunjucks', function() {
     nunjucksRender.nunjucks.configure(['templates/']);
 
@@ -121,6 +122,11 @@ gulp.task('nunjucks', function() {
         .pipe(gulp.dest('.'))
 });
 
+/**
+ * Reads images from directory.
+ * @param imageDir
+ * @returns {Array}
+ */
 function readImages(imageDir) {
     let images = [],
         files = fs.readdirSync(imageDir);
@@ -134,6 +140,7 @@ function readImages(imageDir) {
     return images;
 }
 
+// Compiles the projects.
 gulp.task('projects', function() {
     nunjucks.configure(['templates/']);
     let json = JSON.parse(fs.readFileSync('./data/projects.json', 'utf8')),
@@ -152,6 +159,7 @@ gulp.task('projects', function() {
     }
 });
 
+// Build
 gulp.task('build',
           [
               'fonts',
@@ -163,4 +171,6 @@ gulp.task('build',
               'nunjucks',
               'projects'
           ]);
+
+// Default
 gulp.task('default', ['build']);
