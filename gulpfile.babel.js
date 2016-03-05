@@ -107,10 +107,10 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
     }
 });
 
-// Compile all nunjucks files.
-gulp.task('nunjucks', function() {
-    nunjucksRender.nunjucks.configure(['templates/']);
-
+/**
+ * Compiles nunjucks files.
+ */
+function compileNunjucks() {
     // Gets .html and .nunjucks files in pages
     return gulp.src('pages/**/*.+(html|nunjucks)')
         .pipe(data(function() {
@@ -120,6 +120,18 @@ gulp.task('nunjucks', function() {
         .pipe(nunjucksRender())
         // output files in app folder
         .pipe(gulp.dest('.'))
+}
+
+// Compile all nunjucks files.
+gulp.task('nunjucks', function() {
+    nunjucksRender.nunjucks.configure(['templates/'], { watch: false });
+    return compileNunjucks();
+});
+
+// Compile all nunjucks files and watch for changes.
+gulp.task('nunjucks-watch', function() {
+    nunjucksRender.nunjucks.configure(['templates/']);
+    return compileNunjucks();
 });
 
 /**
@@ -160,17 +172,32 @@ gulp.task('projects', function() {
 });
 
 // Build
-gulp.task('build',
-          [
-              'fonts',
-              'styles',
-              'vendor',
-              'browserify',
-              'browserify-watch',
-              'watch',
-              'nunjucks',
-              'projects'
-          ]);
+gulp.task(
+    'build',
+    [
+      'fonts',
+      'styles',
+      'vendor',
+      'browserify',
+      'nunjucks',
+      'projects'
+    ]
+);
+
+// Watch
+gulp.task(
+    'watch',
+    [
+        'fonts',
+        'styles',
+        'vendor',
+        'browserify',
+        'browserify-watch',
+        'watch',
+        'nunjucks-watch',
+        'projects'
+    ]
+);
 
 // Default
-gulp.task('default', ['build']);
+gulp.task('default', ['watch']);
