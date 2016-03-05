@@ -110,28 +110,29 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
 /**
  * Compiles nunjucks files.
  */
-function compileNunjucks() {
+function compileNunjucks(watch) {
     // Gets .html and .nunjucks files in pages
     return gulp.src('pages/**/*.+(html|nunjucks)')
         .pipe(data(function() {
             return JSON.parse(fs.readFileSync('./data/projects.json', 'utf8'));
         }))
         // Renders template with nunjucks
-        .pipe(nunjucksRender())
+        .pipe(nunjucksRender({
+            path: ['templates/'],
+            watch
+        }))
         // output files in app folder
         .pipe(gulp.dest('.'))
 }
 
 // Compile all nunjucks files.
 gulp.task('nunjucks', function() {
-    nunjucksRender.nunjucks.configure(['templates/'], { watch: false });
-    return compileNunjucks();
+    return compileNunjucks(false);
 });
 
 // Compile all nunjucks files and watch for changes.
 gulp.task('nunjucks-watch', function() {
-    nunjucksRender.nunjucks.configure(['templates/']);
-    return compileNunjucks();
+    return compileNunjucks(true);
 });
 
 /**
@@ -186,7 +187,7 @@ gulp.task(
 
 // Watch
 gulp.task(
-    'watch',
+    'dev',
     [
         'fonts',
         'styles',
@@ -200,4 +201,4 @@ gulp.task(
 );
 
 // Default
-gulp.task('default', ['watch']);
+gulp.task('default', ['dev']);
