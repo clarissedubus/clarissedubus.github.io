@@ -6,3 +6,4 @@ node_js:
 script:
   - bower install
   - gulp build
+  - npm run coveralls

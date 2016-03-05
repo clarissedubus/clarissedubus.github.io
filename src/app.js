@@ -14,15 +14,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-22557714-6', 'auto');
 ga('send', 'pageview');
 
-
-function centerVerticallyInElement($element, $parent, $space) {
-    var ph = $parent.height(),
-        eoh = $element.outerHeight();
-
-    $space.css({
-        'height': (ph - eoh) / 2 + 'px'
-    });
-}
+import { centerVerticallyInElement } from './utils';
 
 function setMainSectionHeight() {
     var $w = $(window),
