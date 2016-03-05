@@ -16,12 +16,14 @@
     "url": "https://github.com/clarissedubus/clarissedubus.github.io/issues"
   },
   "homepage": "http://clarissedubus.com",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.25",
     "babelify": "^6.3.0",
-    "bower": "^1.5.3",
+    "bower": "^1.7.7",
     "browserify": "^11.2.0",
+    "browserify-resolutions": "^1.0.6",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.2",
     "gulp-concat": "^2.6.0",
@@ -30,13 +32,10 @@
     "gulp-less": "^3.0.3",
     "gulp-nunjucks-render": "^1.0.0",
     "gulp-plumber": "^1.0.1",
-    "underscore": "^1.8.3",
-    "vinyl-source-stream": "^1.1.0"
-  },
-  "dependencies": {
-    "browserify-resolutions": "^1.0.6",
     "gulp-util": "^3.0.7",
     "nunjucks": "^2.1.0",
+    "underscore": "^1.8.3",
+    "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.5.0"
   }
 }
