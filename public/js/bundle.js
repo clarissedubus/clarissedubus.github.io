@@ -1,6 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+var _utils = require('./utils');
+
 /**
  * File:    app.js
  * Author:  @juancarlosfarah
@@ -18,64 +20,8 @@
 ga('create', 'UA-22557714-6', 'auto');
 ga('send', 'pageview');
 
-function centerVerticallyInElement($element, $parent, $space) {
-    var ph = $parent.height(),
-        eoh = $element.outerHeight();
-
-    $space.css({
-        'height': (ph - eoh) / 2 + 'px'
-    });
-}
-
-function setMainSectionHeight() {
-    var $w = $(window),
-        hoh = $('header').outerHeight(),
-        fph = $('footer').outerHeight(),
-        wh = $w.height(),
-        noh = $w.width() > 991 ? 0 : $('#nav-col').outerHeight();
-    $('#main-section').css({
-        'height': wh - hoh - fph - noh + 'px'
-    });
-}
-
-function reset() {
-    var space = '20px',
-        $mainSpace = $('#main-space'),
-        $navSpace = $('#nav-space');
-
-    $mainSpace.css({
-        'height': space
-    });
-    $navSpace.css({
-        'height': space
-    });
-}
-
-function render() {
-    var $nav = $('#nav'),
-        $navParent = $('#nav-parent'),
-        $navSpace = $('#nav-space');
-    var $mainContent = $('#main-content'),
-        $main = $('main'),
-        $mainSpace = $('#main-space');
-    setMainSectionHeight();
-    if ($(window).width() > 991) {
-        centerVerticallyInElement($nav, $navParent, $navSpace);
-        centerVerticallyInElement($mainContent, $main, $mainSpace);
-    } else {
-        reset();
-    }
-
-    // Show or hide nav menu.
-    if ($(window).width() > 768) {
-        $('.nav-left').show();
-    } else {
-        $('.nav-left').hide();
-    }
-}
-
 $(document).ready(function () {
-    render();
+    (0, _utils.render)();
     var $grid = $('.grid'),
         $gallery = $('.gallery');
 
@@ -168,7 +114,80 @@ $(document).ready(function () {
 });
 
 $(window).resize(function () {
-    render();
+    (0, _utils.render)();
 });
+
+},{"./utils":2}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+/**
+ * File:    utils.js
+ * Author:  @juancarlosfarah
+ * Date:    05/03/2016
+ */
+
+var centerVerticallyInElement = exports.centerVerticallyInElement = function centerVerticallyInElement($element, $parent, $space) {
+    if ($element && $parent && $space) {
+        var ph = $parent.height(),
+            eoh = $element.outerHeight();
+        $space.css({
+            'height': (ph - eoh) / 2 + 'px'
+        });
+        return true;
+    }
+    return false;
+};
+
+var setMainSectionHeight = exports.setMainSectionHeight = function setMainSectionHeight() {
+    var sm = 991;
+    var $w = $(window),
+        hoh = $('header').outerHeight(),
+        fph = $('footer').outerHeight(),
+        wh = $w.height(),
+        noh = $w.width() > sm ? 0 : $('#nav-col').outerHeight();
+    $('#main-section').css({
+        height: wh - hoh - fph - noh + 'px'
+    });
+};
+
+var render = exports.render = function render() {
+    var xs = 768;
+    var $nav = $('#nav'),
+        $navParent = $('#nav-parent'),
+        $navSpace = $('#nav-space');
+    var $mainContent = $('#main-content'),
+        $main = $('main'),
+        $mainSpace = $('#main-space');
+    setMainSectionHeight();
+    if ($(window).width() > 991) {
+        centerVerticallyInElement($nav, $navParent, $navSpace);
+        centerVerticallyInElement($mainContent, $main, $mainSpace);
+    } else {
+        reset();
+    }
+
+    // Show or hide nav menu.
+    if ($(window).width() > xs) {
+        $('.nav-left').show();
+    } else {
+        $('.nav-left').hide();
+    }
+};
+
+function reset() {
+    var space = '20px',
+        $mainSpace = $('#main-space'),
+        $navSpace = $('#nav-space');
+
+    $mainSpace.css({
+        height: space
+    });
+    $navSpace.css({
+        height: space
+    });
+}
 
 },{}]},{},[1]);

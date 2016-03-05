@@ -14,54 +14,11 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-22557714-6', 'auto');
 ga('send', 'pageview');
 
-import { centerVerticallyInElement } from './utils';
-
-function setMainSectionHeight() {
-    var $w = $(window),
-        hoh = $('header').outerHeight(),
-        fph = $('footer').outerHeight(),
-        wh = $w.height(),
-        noh = ($w.width() > 991) ? 0 : $('#nav-col').outerHeight();
-    $('#main-section').css({
-        'height': (wh - hoh - fph - noh) + 'px'
-    });
-}
-
-function reset() {
-    var space = '20px',
-        $mainSpace = $('#main-space'),
-        $navSpace = $('#nav-space');
-
-    $mainSpace.css({
-        'height': space
-    });
-    $navSpace.css({
-        'height': space
-    });
-}
-
-function render() {
-    var $nav = $('#nav'),
-        $navParent = $('#nav-parent'),
-        $navSpace = $('#nav-space');
-    var $mainContent = $('#main-content'),
-        $main = $('main'),
-        $mainSpace = $('#main-space');
-    setMainSectionHeight();
-    if ($(window).width() > 991) {
-        centerVerticallyInElement($nav, $navParent, $navSpace);
-        centerVerticallyInElement($mainContent, $main, $mainSpace);
-    } else {
-        reset();
-    }
-
-    // Show or hide nav menu.
-    if ($(window).width() > 768) {
-        $('.nav-left').show();
-    } else {
-        $('.nav-left').hide();
-    }
-}
+import {
+    centerVerticallyInElement,
+    setMainSectionHeight,
+    render
+} from './utils';
 
 $(document).ready(function() {
     render();
