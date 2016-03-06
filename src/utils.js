@@ -4,7 +4,10 @@
  * Date:    05/03/2016
  */
 
-export const centerVerticallyInElement = function ($element, $parent, $space) {
+/**
+ * Centers an element vertically inside another element.
+ */
+export const centerVerticallyInElement = ($element, $parent, $space) => {
     if ($element && $parent && $space) {
         var ph = $parent.height(),
             eoh = $element.outerHeight();
@@ -16,7 +19,10 @@ export const centerVerticallyInElement = function ($element, $parent, $space) {
     return false;
 };
 
-export const setMainSectionHeight = function () {
+/**
+ * Sets the height of the main section.
+ */
+export const setMainSectionHeight = () => {
     const sm = 991;
     var $w = $(window),
         hoh = $('header').outerHeight(),
@@ -28,7 +34,25 @@ export const setMainSectionHeight = function () {
     });
 };
 
-export const render = function () {
+/**
+ * Resets the layout.
+ */
+function reset() {
+    var space = '20px',
+        $mainSpace = $('#main-space'),
+        $navSpace = $('#nav-space');
+    $mainSpace.css({
+        height: space
+    });
+    $navSpace.css({
+        height: space
+    });
+}
+
+/**
+ * Renders the page as required.
+ */
+export const render = () => {
     const xs = 768;
     var $nav = $('#nav'),
         $navParent = $('#nav-parent'),
@@ -51,16 +75,3 @@ export const render = function () {
         $('.nav-left').hide();
     }
 };
-
-function reset() {
-    var space = '20px',
-        $mainSpace = $('#main-space'),
-        $navSpace = $('#nav-space');
-
-    $mainSpace.css({
-        height: space
-    });
-    $navSpace.css({
-        height: space
-    });
-}
