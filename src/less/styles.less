@@ -38,7 +38,7 @@ a.white {
 }
 
 a.quiet {
-  &:hover {
+  &:hover, &:active, &:visited {
     text-decoration: none;
   }
 }
@@ -171,13 +171,13 @@ header {
   }
   @media (min-width: @screen-md) and (max-width: @screen-md-max) {
     width: 20%;
-    height: 100%;
+    height: auto;
   }
   @media (min-width: @screen-lg) {
     float: left;
     display: block;
     width: 15%;
-    height: 100%;
+    height: auto;
   }
 }
 

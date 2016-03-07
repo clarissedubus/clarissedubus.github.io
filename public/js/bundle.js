@@ -129,6 +129,9 @@ Object.defineProperty(exports, "__esModule", {
  * Date:    05/03/2016
  */
 
+/**
+ * Centers an element vertically inside another element.
+ */
 var centerVerticallyInElement = exports.centerVerticallyInElement = function centerVerticallyInElement($element, $parent, $space) {
     if ($element && $parent && $space) {
         var ph = $parent.height(),
@@ -141,6 +144,9 @@ var centerVerticallyInElement = exports.centerVerticallyInElement = function cen
     return false;
 };
 
+/**
+ * Sets the height of the main section.
+ */
 var setMainSectionHeight = exports.setMainSectionHeight = function setMainSectionHeight() {
     var sm = 991;
     var $w = $(window),
@@ -153,6 +159,24 @@ var setMainSectionHeight = exports.setMainSectionHeight = function setMainSectio
     });
 };
 
+/**
+ * Resets the layout.
+ */
+function reset() {
+    var space = '20px',
+        $mainSpace = $('#main-space'),
+        $navSpace = $('#nav-space');
+    $mainSpace.css({
+        height: space
+    });
+    $navSpace.css({
+        height: space
+    });
+}
+
+/**
+ * Renders the page as required.
+ */
 var render = exports.render = function render() {
     var xs = 768;
     var $nav = $('#nav'),
@@ -176,18 +200,5 @@ var render = exports.render = function render() {
         $('.nav-left').hide();
     }
 };
-
-function reset() {
-    var space = '20px',
-        $mainSpace = $('#main-space'),
-        $navSpace = $('#nav-space');
-
-    $mainSpace.css({
-        height: space
-    });
-    $navSpace.css({
-        height: space
-    });
-}
 
 },{}]},{},[1]);
