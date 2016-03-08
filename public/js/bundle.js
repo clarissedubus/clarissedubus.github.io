@@ -1,8 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
-
-var _utils = require('./utils');
-
 /**
  * File:    app.js
  * Author:  @juancarlosfarah
@@ -10,7 +6,10 @@ var _utils = require('./utils');
  */
 
 // Google Analytics
-// ================
+'use strict';
+
+var _utils = require('./utils');
+
 (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {
         (i[r].q = i[r].q || []).push(arguments);
@@ -116,13 +115,9 @@ $(document).ready(function () {
 $(window).resize(function () {
     (0, _utils.render)();
 });
+// ================
 
 },{"./utils":2}],2:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 /**
  * File:    utils.js
  * Author:  @juancarlosfarah
@@ -132,7 +127,12 @@ Object.defineProperty(exports, "__esModule", {
 /**
  * Centers an element vertically inside another element.
  */
-var centerVerticallyInElement = exports.centerVerticallyInElement = function centerVerticallyInElement($element, $parent, $space) {
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+var centerVerticallyInElement = function centerVerticallyInElement($element, $parent, $space) {
     if ($element && $parent && $space) {
         var ph = $parent.height(),
             eoh = $element.outerHeight();
@@ -144,10 +144,11 @@ var centerVerticallyInElement = exports.centerVerticallyInElement = function cen
     return false;
 };
 
+exports.centerVerticallyInElement = centerVerticallyInElement;
 /**
  * Sets the height of the main section.
  */
-var setMainSectionHeight = exports.setMainSectionHeight = function setMainSectionHeight() {
+var setMainSectionHeight = function setMainSectionHeight() {
     var sm = 991;
     var $w = $(window),
         hoh = $('header').outerHeight(),
@@ -159,6 +160,7 @@ var setMainSectionHeight = exports.setMainSectionHeight = function setMainSectio
     });
 };
 
+exports.setMainSectionHeight = setMainSectionHeight;
 /**
  * Resets the layout.
  */
@@ -177,7 +179,7 @@ function reset() {
 /**
  * Renders the page as required.
  */
-var render = exports.render = function render() {
+var render = function render() {
     var xs = 768;
     var $nav = $('#nav'),
         $navParent = $('#nav-parent'),
@@ -200,5 +202,6 @@ var render = exports.render = function render() {
         $('.nav-left').hide();
     }
 };
+exports.render = render;
 
 },{}]},{},[1]);
