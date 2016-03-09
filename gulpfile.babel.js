@@ -4,22 +4,30 @@
  * File:    gulpfile.babel.js
  */
 
-import gulp from 'gulp';
-import babelify from 'babelify';
-import browserify from 'browserify';
-import concat from 'gulp-concat';
-import source from 'vinyl-source-stream';
-import cssmin from 'gulp-cssmin';
-import less from 'gulp-less';
-import gutil from 'gulp-util';
-import plumber from 'gulp-plumber';
-import autoprefixer from 'gulp-autoprefixer';
-import resolutions from 'browserify-resolutions';
-import watchify from 'watchify';
-import nunjucksRender from 'gulp-nunjucks-render';
-import data from 'gulp-data';
-import fs from 'fs';
-import nunjucks from 'nunjucks';
+const gulp = require('gulp');
+const babelify = require('babelify');
+const browserify = require('browserify');
+const concat = require('gulp-concat');
+const source = require('vinyl-source-stream');
+const cssmin = require('gulp-cssmin');
+const less = require('gulp-less');
+const util = require('gulp-util');
+const plumber = require('gulp-plumber');
+const _ = require('lodash');
+const autoprefixer = require('gulp-autoprefixer');
+const resolutions = require('browserify-resolutions');
+const watchify = require('watchify');
+const nunjucksRender = require('gulp-nunjucks-render');
+const data = require('gulp-data');
+const nunjucks = require('nunjucks');
+const imagemin = require('gulp-imagemin');
+const pngquant = require('imagemin-pngquant');
+const rimraf = require('rimraf');
+const imageResize = require('gulp-image-resize');
+const fs = require('fs');
+
+// TODO: Make images 800px wide on largest dimension.
+// const imageSize = require('image-size');
 
 const dependencies = [
     'underscore'
@@ -96,10 +104,10 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
         return bundler.plugin(resolutions, '*')
             .bundle()
             .on('error', function(err) {
-                gutil.log(gutil.colors.red(err.toString()));
+                util.log(util.colors.red(err.toString()));
             })
             .on('end', function() {
-                gutil.log(gutil.colors.green('Finished re-bundling in',
+                util.log(util.colors.green('Finished re-bundling in',
                     (Date.now() - start) + 'ms.'));
             })
             .pipe(source('bundle.js'))
@@ -109,20 +117,21 @@ gulp.task('browserify-watch', ['browserify-vendor'], function() {
 
 /**
  * Compiles nunjucks files.
+ * @param watch
  */
 function compileNunjucks(watch) {
-    // Gets .html and .nunjucks files in pages
+    // Gets .html and .nunjucks files in pages.
     return gulp.src('pages/**/*.+(html|nunjucks)')
         .pipe(data(function() {
             return JSON.parse(fs.readFileSync('./data/projects.json', 'utf8'));
         }))
-        // Renders template with nunjucks
+        // Renders template with nunjucks.
         .pipe(nunjucksRender({
             path: ['templates/'],
             watch
         }))
-        // output files in app folder
-        .pipe(gulp.dest('.'))
+        // Output files in app folder.
+        .pipe(gulp.dest('.'));
 }
 
 // Compile all nunjucks files.
@@ -158,30 +167,56 @@ gulp.task('projects', function() {
     nunjucks.configure(['templates/']);
     let json = JSON.parse(fs.readFileSync('./data/projects.json', 'utf8')),
         projects = json.projects;
-    for (var key in projects) {
-        let project = projects[key],
-            imageDir = './public/images/' + key;
+    _.map(projects, (project, key) => {
+        const imageDir = `./public/images/${key}`;
         project['images'] = readImages(imageDir);
         project['key'] = key;
-        var html = nunjucks.render('project.nunjucks',
-                                   {
-                                       project: project,
-                                       projects: projects
-                                   });
+        const html = nunjucks.render('project.nunjucks',
+            {
+                project: project,
+                projects: projects
+            });
         fs.writeFileSync(key + '.html', html);
-    }
+    });
+});
+
+// Cleans public images folder.
+gulp.task('clean', (callback) => {
+    return rimraf('./public/images', callback);
+});
+
+// Re-sizes and optimises images.
+gulp.task('images', ['clean'], () => {
+    const width = 800;
+    return gulp.src('./src/images/**/*')
+        .pipe(imageResize({
+            width,
+            crop : false,
+            upscale : false
+        }))
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [
+                {
+                    removeViewBox: false
+                }
+            ],
+            use: [pngquant()]
+        }))
+        .pipe(gulp.dest('./public/images'));
 });
 
 // Build
 gulp.task(
     'build',
     [
-      'fonts',
-      'styles',
-      'vendor',
-      'browserify',
-      'nunjucks',
-      'projects'
+        'fonts',
+        'styles',
+        'vendor',
+        'browserify',
+        'nunjucks',
+        'images',
+        'projects'
     ]
 );
 
@@ -196,6 +231,7 @@ gulp.task(
         'browserify-watch',
         'watch',
         'nunjucks-watch',
+        'images',
         'projects'
     ]
 );
