@@ -48,6 +48,7 @@
     "gulp-util": "^3.0.7",
     "image-size": "0.4.0",
     "imagemin-pngquant": "4.2.2",
+    "istanbul": "1.0.0-alpha.2",
     "lodash": "4.6.1",
     "nunjucks": "^2.3.0",
     "rimraf": "2.5.2",
