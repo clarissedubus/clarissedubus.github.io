@@ -186,7 +186,7 @@ gulp.task('clean', (callback) => {
 });
 
 // Re-sizes and optimises images.
-gulp.task('images', ['clean'], () => {
+gulp.task('images', () => {
     const width = 800;
     return gulp.src('./src/images/**/*')
         .pipe(imageResize({
@@ -215,6 +215,7 @@ gulp.task(
         'vendor',
         'browserify',
         'nunjucks',
+        'clean',
         'images',
         'projects'
     ]
@@ -231,6 +232,7 @@ gulp.task(
         'browserify-watch',
         'watch',
         'nunjucks-watch',
+        'clean',
         'images',
         'projects'
     ]
