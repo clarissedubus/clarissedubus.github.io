@@ -34,7 +34,7 @@ const dependencies = [
 ];
 
 // Combine all JS libraries into a single file for fewer HTTP requests.
-gulp.task('vendor', function() {
+gulp.task('vendor', () => {
     return gulp.src([
         'bower_components/jquery/dist/jquery.js',
         'bower_components/bootstrap/dist/js/bootstrap.js',
@@ -47,13 +47,13 @@ gulp.task('vendor', function() {
 });
 
 // Copy all fonts to public directory.
-gulp.task('fonts', function() {
+gulp.task('fonts', () => {
     return gulp.src(['bower_components/bootstrap/fonts/**/*'])
                .pipe(gulp.dest('public/fonts'));
 });
 
 // Compile third-party dependencies separately for faster performance.
-gulp.task('browserify-vendor', function() {
+gulp.task('browserify-vendor', () => {
     return browserify()
         .require(dependencies)
         .plugin(resolutions, 'react')
@@ -63,7 +63,7 @@ gulp.task('browserify-vendor', function() {
 });
 
 // Compile only project files, excluding all third-party dependencies.
-gulp.task('browserify', ['browserify-vendor'], function() {
+gulp.task('browserify', ['browserify-vendor'], () => {
     return browserify('src/app.js')
         .external(dependencies)
         .plugin(resolutions, '*')
@@ -74,7 +74,7 @@ gulp.task('browserify', ['browserify-vendor'], function() {
 });
 
 // Compile LESS stylesheets.
-gulp.task('styles', function() {
+gulp.task('styles', () => {
     return gulp.src('src/less/styles.less')
         .pipe(plumber())
         .pipe(less())
@@ -84,14 +84,14 @@ gulp.task('styles', function() {
 });
 
 // Watch for changes across relevant directories.
-gulp.task('watch', function() {
+gulp.task('watch', () => {
     gulp.watch('src/less/**/*.less', ['styles']);
     gulp.watch('**/*.nunjucks', ['nunjucks', 'projects']);
     gulp.watch('data/*.json', ['nunjucks', 'projects']);
 });
 
 // Same as browserify task, but will also watch for changes and re-compile.
-gulp.task('browserify-watch', ['browserify-vendor'], function() {
+gulp.task('browserify-watch', ['browserify-vendor'], () => {
     var bundler = watchify(browserify('src/app.js', watchify.args));
     bundler.external(dependencies);
     bundler.plugin(resolutions, '*');
@@ -135,12 +135,12 @@ function compileNunjucks(watch) {
 }
 
 // Compile all nunjucks files.
-gulp.task('nunjucks', function() {
+gulp.task('nunjucks', () => {
     return compileNunjucks(false);
 });
 
 // Compile all nunjucks files and watch for changes.
-gulp.task('nunjucks-watch', function() {
+gulp.task('nunjucks-watch', () => {
     return compileNunjucks(true);
 });
 
@@ -163,7 +163,7 @@ function readImages(imageDir) {
 }
 
 // Compiles the projects.
-gulp.task('projects', function() {
+gulp.task('projects', ['images'], () => {
     nunjucks.configure(['templates/']);
     let json = JSON.parse(fs.readFileSync('./data/projects.json', 'utf8')),
         projects = json.projects;
@@ -186,7 +186,7 @@ gulp.task('clean', (callback) => {
 });
 
 // Re-sizes and optimises images.
-gulp.task('images', () => {
+gulp.task('images', ['clean'], () => {
     const width = 800;
     return gulp.src('./src/images/**/*')
         .pipe(imageResize({
