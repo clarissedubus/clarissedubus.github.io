@@ -65,6 +65,12 @@
             "tagline": "2016",
             "description": "For this project, the client was looking to re-purpose what used to be a child's bedroom as a guest room. A dark blue paint mixed with black ink was applied on the wall to change the atmosphere and give more intimacy to the space. A selection of contemporary and 1950s furniture provide a touch of character, elegance and comfort.",
             "mainImage": "ClarisseDubus-Bedroom.jpg"
+        },
+        "miami": {
+            "title": "Miami Lakeside Villa",
+            "tagline": "2016",
+            "description": "Work in progress.",
+            "mainImage": "MiamiProject-FirstFloor.jpg"
         }
     }
 }
